@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <style>
+         /* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e90ff, #00c6ff);
+    color: white;
+}
+
+/* Contenedor */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Input */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Botón */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #00c6ff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #1e90ff;
+    transform: scale(1.05);
+}
+
+/* Mensaje */
+#mensaje {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Iniciar Sesión</h2>
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button onclick="iniciarSesion()">Iniciar Sesión</button>
+        <p id="mensaje"></p>
+
+        <!-- Botón para ir a Registro -->
+        <p>¿No tienes una cuenta?</p>
+        <button onclick="window.location.href='registro.html'">Registrarse</button>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZYhJomDLpgCBTAUWLKJVB5IYCs-SUGF8",
+            authDomain: "aplicaciones-62b00.firebaseapp.com",
+            projectId: "aplicaciones-62b00",
+            storageBucket: "aplicaciones-62b00.firebasestorage.app",
+            messagingSenderId: "1085688217425",
+            appId: "1:1085688217425:web:e062f98b70c0c8956f9d70",
+            measurementId: "G-XN5Z2YQG22"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        window.iniciarSesion = async function () {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let mensaje = document.getElementById("mensaje");
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                if (!user.emailVerified) {
+                    mensaje.innerText = "⚠️ Debes verificar tu correo antes de iniciar sesión.";
+                    return;
+                }
+
+                mensaje.innerText = "✅ Inicio de sesión exitoso";
+                setTimeout(() => {
+                    window.location.href = "dashboard.html";
+                }, 2000);
+            } catch (error) {
+                mensaje.innerText = "❌ Error: " + error.message;
+            }
+        };
+    </script>
+
+</body>
+</html>

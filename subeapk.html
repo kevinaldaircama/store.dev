@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Aplicación</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Sube tu Aplicación</h2>
+
+    <form id="appForm">
+        <label>Nombre de la app:</label>
+        <input type="text" id="nombre" required>
+
+        <label>Versión:</label>
+        <input type="text" id="version" required>
+
+        <label>Logo (URL; 512x 512):</label>
+        <input type="url" id="logo" required>
+
+        <label>Descripción:</label>
+        <textarea id="descripcion" required></textarea>
+
+        <label>Captura de pantalla (URL has toda una sola):</label>
+        <input type="url" id="captura" required>
+
+        <label>Categoría:</label>
+        <input type="text" id="categoria" required>
+
+        <label>Plataforma:</label>
+        <select id="plataforma">
+            <option>Android</option>
+            <option>iOS</option>
+        </select>
+
+        <label>¿Está creado para niños?</label>
+        <select id="paraNinos">
+            <option>Sí</option>
+            <option>No</option>
+        </select>
+
+        <label>Nombre del desarrollador:</label>
+        <input type="text" id="desarrollador" required>
+
+        <label>Correo de soporte:</label>
+        <input type="email" id="correo" required>
+
+        <label>Sube tu app (link):</label>
+        <input type="url" id="linkApp" required>
+
+        <label>Sube tu app (APK - URL):</label>
+        <input type="url" id="apk" required>
+
+        <button type="submit">Subir Aplicación</button>
+    </form>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>✅ Aplicación enviada correctamente</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZYhJomDLpgCBTAUWLKJVB5IYCs-SUGF8",
+            authDomain: "aplicaciones-62b00.firebaseapp.com",
+            projectId: "aplicaciones-62b00",
+            storageBucket: "aplicaciones-62b00.firebasestorage.app",
+            messagingSenderId: "1085688217425",
+            appId: "1:1085688217425:web:e062f98b70c0c8956f9d70",
+            measurementId: "G-XN5Z2YQG22"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.getElementById("appForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const datos = {
+                nombre: document.getElementById("nombre").value,
+                version: document.getElementById("version").value,
+                logo: document.getElementById("logo").value,
+                descripcion: document.getElementById("descripcion").value,
+                captura: document.getElementById("captura").value,
+                categoria: document.getElementById("categoria").value,
+                plataforma: document.getElementById("plataforma").value,
+                paraNinos: document.getElementById("paraNinos").value,
+                desarrollador: document.getElementById("desarrollador").value,
+                correo: document.getElementById("correo").value,
+                linkApp: document.getElementById("linkApp").value,
+                apk: document.getElementById("apk").value
+            };
+
+            try {
+                await addDoc(collection(db, "aplicaciones"), datos);
+                
+                // Mostrar modal
+                const modal = document.getElementById("modal");
+                modal.style.display = "flex";
+
+                // Cerrar modal automáticamente después de 3 segundos
+                setTimeout(() => {
+                    modal.style.display = "none";
+                    document.getElementById("appForm").reset();
+                }, 3000);
+                
+            } catch (error) {
+                alert("❌ Error al subir la aplicación: " + error.message);
+            }
+        });
+    </script>
+
+</body>
+</html>
