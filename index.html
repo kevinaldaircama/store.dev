@@ -5,3 +5,431 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online App Store</title>
     <style>
+     :root {
+    --bg-light: #f4f4f4;
+    --text-light: #333;
+    --header-light: #007bff;
+    --sidebar-light: #007bff;
+    --border-light: #007bff;
+    --button-light: #007bff;
+    --button-hover-light: #0056b3;
+    
+    --bg-dark: #121212;
+    --text-dark: #fff;
+    --header-dark: #1e1e1e;
+    --sidebar-dark: #1e1e1e;
+    --border-dark: #444;
+    --button-dark: #444;
+    --button-hover-dark: #666;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    transition: 0.3s;
+}
+
+body.dark-mode {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+/* ----- HEADER ----- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--header-light);
+    color: white;
+    font-size: 18px;
+}
+
+body.dark-mode .header {
+    background: var(--header-dark);
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icons span {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* ----- SIDEBAR ----- */
+.sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background: var(--sidebar-light);
+    padding-top: 60px;
+    transition: left 0.3s;
+}
+
+body.dark-mode .sidebar {
+    background: var(--sidebar-dark);
+}
+
+.sidebar h2, .sidebar a {
+    color: white;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sidebar a:hover {
+    background: var(--button-hover-light);
+}
+
+body.dark-mode .sidebar a:hover {
+    background: var(--button-hover-dark);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ----- SUBMENÚ ----- */
+.submenu {
+    display: none;
+    flex-direction: column;
+    background: var(--button-hover-light);
+}
+
+body.dark-mode .submenu {
+    background: var(--button-hover-dark);
+}
+
+.submenu a {
+    padding: 10px;
+    padding-left: 40px;
+}
+
+.submenu.active {
+    display: flex;
+}
+
+/* ----- SECCIÓN DE TENDENCIAS ----- */
+.trends-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px;
+    margin: 15px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+}
+
+body.dark-mode .trends-container {
+    background: var(--bg-dark);
+}
+
+/* Tarjetas de Aplicaciones */
+.app {
+    min-width: 140px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+    transition: transform 0.3s;
+}
+
+body.dark-mode .app {
+    background: #1e1e1e;
+    border: 1px solid var(--border-dark);
+}
+
+.app:hover {
+    transform: scale(1.03);
+}
+
+.app img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.app-info {
+    margin-top: 5px;
+}
+
+.download-btn {
+    margin-top: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    background: var(--button-light);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.download-btn:hover {
+    background: var(--button-hover-light);
+}
+
+body.dark-mode .download-btn {
+    background: var(--button-dark);
+}
+
+body.dark-mode .download-btn:hover {
+    background: var(--button-hover-dark);
+}
+
+/* ----- TÍTULOS Y BOTÓN "VER MÁS" ----- */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    padding: 6px 12px;
+    background: var(--header-light);
+    color: white;
+    border-radius: 8px;
+    width: 90%;
+}
+
+body.dark-mode .section-header {
+    background: var(--header-dark);
+}
+
+.view-more-btn {
+    font-size: 12px;
+    background: white;
+    color: var(--button-light);
+    padding: 4px 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+.view-more-btn:hover {
+    background: var(--button-hover-light);
+    color: white;
+}
+
+body.dark-mode .view-more-btn {
+    background: var(--button-dark);
+    color: white;
+}
+
+body.dark-mode .view-more-btn:hover {
+    background: var(--button-hover-dark);
+}
+/* Contenedor principal */
+.container {
+    width: 90%;
+    max-width: 400px; /* Compacto */
+    margin: 20px auto;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .container {
+    background: #1e1e1e;
+    box-shadow: 0px 2px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Cada sección con su propio cuadro */
+.section-box {
+    border: 2px solid #007bff;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .section-box {
+    border-color: #666;
+    background: #2a2a2a;
+}
+
+/* Títulos dentro de cada cuadro */
+.section-box h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #007bff;
+    text-align: center;
+    border-bottom: 1.5px solid #007bff;
+    padding-bottom: 5px;
+}
+
+body.dark-mode .section-box h2 {
+    color: white;
+    border-bottom: 1.5px solid #666;
+}
+
+/* Cuadrícula más compacta */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.grid a {
+    display: block;
+    padding: 6px;
+    font-size: 12px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.grid a:hover {
+    background: #0056b3;
+}
+
+body.dark-mode .grid a {
+    background: #444;
+}
+
+body.dark-mode .grid a:hover {
+    background: #666;
+}
+
+/* Estilos para enlaces del footer en su propio cuadro */
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+.footer-links a {
+    padding: 5px 8px;
+    font-size: 12px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.footer-links a:hover {
+    background: #0056b3;
+}
+
+body.dark-mode .footer-links a {
+    background: #444;
+}
+
+body.dark-mode .footer-links a:hover {
+    background: #666;
+}
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+/* Estilos para el preloader */
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+/* Animación del círculo */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #007bff;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+/* Keyframes para la animación */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mensaje de carga */
+#loading-text {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+         /* Estilos del modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-contenido {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .modal h2 {
+            color: #d9534f;
+        }
+        .btn {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #c9302c;
+        }
+    </style>
