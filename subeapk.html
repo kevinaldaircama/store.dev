@@ -8,60 +8,89 @@
 </head>
 <body>
 
-    <h2>Sube tu Aplicación</h2>
+    <h1>🚀 Subir Nueva Aplicación</h1>
+    
+    <form id="uploadForm">
+        <label>👤 Nombre del Creador:</label>
+        <input type="text" id="nombreCreador" required>
 
-    <form id="appForm">
-        <label>Nombre de la app:</label>
+        <label>📱 Nombre de la App:</label>
         <input type="text" id="nombre" required>
 
-        <label>Versión:</label>
+        <label>🔢 Versión:</label>
         <input type="text" id="version" required>
 
-        <label>Logo (URL; 512x 512):</label>
+        <label>🖼️ Logo (Link 512x512):</label>
         <input type="url" id="logo" required>
 
-        <label>Descripción:</label>
-        <textarea id="descripcion" required></textarea>
+        <label>📸 Capturas de Pantalla (Hasta 5 links separados por coma):</label>
+        <input type="text" id="capturas">
 
-        <label>Captura de pantalla (URL has toda una sola):</label>
-        <input type="url" id="captura" required>
+        <label>🎥 Video (Opcional):</label>
+        <input type="url" id="video">
 
-        <label>Categoría:</label>
+        <label>📂 Categoría:</label>
         <input type="text" id="categoria" required>
 
-        <label>Plataforma:</label>
-        <select id="plataforma">
-            <option>Android</option>
-            <option>iOS</option>
+        <label>📱 Plataforma:</label>
+        <select id="plataforma" required>
+            <option value="Android">Android</option>
+            <option value="iPhone">iPhone</option>
         </select>
 
-        <label>¿Está creado para niños?</label>
-        <select id="paraNinos">
-            <option>Sí</option>
-            <option>No</option>
-        </select>
-
-        <label>Nombre del desarrollador:</label>
-        <input type="text" id="desarrollador" required>
-
-        <label>Correo de soporte:</label>
+        <label>📧 Correo de Soporte:</label>
         <input type="email" id="correo" required>
 
-        <label>Sube tu app (link):</label>
+        <label>👶 ¿Para niños?:</label>
+        <select id="paraNinos">
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+
+        <label>🔗 Link de la App:</label>
         <input type="url" id="linkApp" required>
 
-        <label>Sube tu app (APK - URL):</label>
-        <input type="url" id="apk" required>
+        <label>📥 Subir APK (Link):</label>
+        <input type="url" id="apk">
 
-        <button type="submit">Subir Aplicación</button>
+        <label>💳 Licencia:</label>
+        <select id="licencia">
+            <option value="Gratis">Gratis</option>
+            <option value="De Paga">De Paga</option>
+        </select>
+
+        <label>⭐ ¿Quieres que tu app aparezca en la sección de reseñas?</label>
+        <select id="aparecerReseñas">
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+
+        <label>🛠️ Tu aplicación está en versión beta:</label>
+        <select id="estado">
+            <option value="En desarrollo">En desarrollo</option>
+            <option value="Terminada">Terminada</option>
+        </select>
+
+        <label>📌 ¿Has enviado esta app antes?</label>
+        <select id="enviadoAntes">
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+
+        <label>📢 ¿Tu app contiene anuncios?</label>
+        <select id="contieneAnuncios">
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+
+        <label>📲 ¿Quieres que tu app aparezca en nuestra app?</label>
+        <select id="aparecerEnApp">
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+
+        <button type="submit">🚀 Enviar Aplicación</button>
     </form>
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <p>✅ Aplicación enviada correctamente</p>
-        </div>
-    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -80,42 +109,34 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        document.getElementById("appForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
+        document.getElementById("uploadForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
 
-            const datos = {
+            const data = {
+                nombreCreador: document.getElementById("nombreCreador").value,
                 nombre: document.getElementById("nombre").value,
                 version: document.getElementById("version").value,
                 logo: document.getElementById("logo").value,
-                descripcion: document.getElementById("descripcion").value,
-                captura: document.getElementById("captura").value,
+                capturas: document.getElementById("capturas").value.split(",").map(url => url.trim()),
+                video: document.getElementById("video").value,
                 categoria: document.getElementById("categoria").value,
                 plataforma: document.getElementById("plataforma").value,
-                paraNinos: document.getElementById("paraNinos").value,
-                desarrollador: document.getElementById("desarrollador").value,
                 correo: document.getElementById("correo").value,
+                paraNinos: document.getElementById("paraNinos").value,
                 linkApp: document.getElementById("linkApp").value,
-                apk: document.getElementById("apk").value
+                apk: document.getElementById("apk").value,
+                licencia: document.getElementById("licencia").value,
+                aparecerReseñas: document.getElementById("aparecerReseñas").value,
+                estado: document.getElementById("estado").value,
+                enviadoAntes: document.getElementById("enviadoAntes").value,
+                contieneAnuncios: document.getElementById("contieneAnuncios").value,
+                aparecerEnApp: document.getElementById("aparecerEnApp").value
             };
 
-            try {
-                await addDoc(collection(db, "aplicaciones"), datos);
-                
-                // Mostrar modal
-                const modal = document.getElementById("modal");
-                modal.style.display = "flex";
-
-                // Cerrar modal automáticamente después de 3 segundos
-                setTimeout(() => {
-                    modal.style.display = "none";
-                    document.getElementById("appForm").reset();
-                }, 3000);
-                
-            } catch (error) {
-                alert("❌ Error al subir la aplicación: " + error.message);
-            }
+            await addDoc(collection(db, "aplicaciones"), data);
+            alert("✅ Aplicación enviada con éxito");
         });
     </script>
 
 </body>
-</html>
+                                                   </html></html>
