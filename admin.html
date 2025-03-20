@@ -4,51 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Diseño Moderno y Atractivo */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #00ffcc;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .app-card {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.2);
+            width: 320px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 255, 204, 0.3);
+            border-color: #00ffcc;
+        }
+
+        .app-card h3 {
+            color: #00ffcc;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .app-card p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .app-card a {
+            color: #00bfff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn.approve {
+            background: #28a745;
+            color: white;
+            border: none;
+        }
+
+        .btn.approve:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        .btn.delete {
+            background: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        .btn.delete:hover {
+            background: #c82333;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+     </style>
 </head>
 <body>
 
-    <h2>Panel de Administración</h2>
+    <h1>📂 Panel de Administración</h1>
+    <div id="appList"></div>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Versión</th>
-                <th>Fecha de Envío</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="tablaApps"></tbody>
-    </table>
-
-    <!-- Modal para ver detalles -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Detalles de la Aplicación</h3>
-            <p><strong>Nombre:</strong> <span id="detNombre"></span></p>
-            <p><strong>Versión:</strong> <span id="detVersion"></span></p>
-            <p><strong>Fecha de Envío:</strong> <span id="detFecha"></span></p>
-            <p><strong>Logo:</strong> <br> <img id="detLogo" width="100"></p>
-            <p><strong>Descripción:</strong> <span id="detDescripcion"></span></p>
-            <p><strong>Captura de pantalla:</strong> <br> <img id="detCaptura" width="100"></p>
-            <p><strong>Categoría:</strong> <span id="detCategoria"></span></p>
-            <p><strong>Plataforma:</strong> <span id="detPlataforma"></span></p>
-            <p><strong>Para niños:</strong> <span id="detParaNinos"></span></p>
-            <p><strong>Desarrollador:</strong> <span id="detDesarrollador"></span></p>
-            <p><strong>Correo:</strong> <span id="detCorreo"></span></p>
-            <p><strong>App:</strong> <a id="detLinkApp" target="_blank">Ver App</a></p>
-            <p><strong>APK:</strong> <a id="detAPK" target="_blank">Descargar APK</a></p>
-        </div>
-    </div>
-
-    <!-- Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, deleteDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // Configuración de Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBZYhJomDLpgCBTAUWLKJVB5IYCs-SUGF8",
             authDomain: "aplicaciones-62b00.firebaseapp.com",
@@ -59,122 +125,65 @@
             measurementId: "G-XN5Z2YQG22"
         };
 
-        // Inicializar Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Cargar datos en el Panel Admin
-        async function cargarDatos() {
+        async function cargarAplicaciones() {
+            const appList = document.getElementById("appList");
+            appList.innerHTML = "<p>📡 Cargando aplicaciones...</p>";
+
             const querySnapshot = await getDocs(collection(db, "aplicaciones"));
-            const tabla = document.getElementById("tablaApps");
+            appList.innerHTML = "";
 
             querySnapshot.forEach((doc) => {
-                const datos = doc.data();
-                const id = doc.id;
+                const data = doc.data();
+                const appDiv = document.createElement("div");
 
-                const fila = `
-                    <tr>
-                        <td>${datos.nombre}</td>
-                        <td>${datos.version}</td>
-                        <td>${new Date().toLocaleDateString()}</td>
-                        <td>
-                            <button onclick="verDetalles('${id}')">👀 Ver</button>
-                            <button onclick="eliminarApp('${id}')">❌ Eliminar</button>
-                        </td>
-                    </tr>
+                appDiv.innerHTML = `
+                    <h3>📱 ${data.nombre} (v${data.version})</h3>
+                    <p>📂 Categoría: ${data.categoria}</p>
+                    <p>📧 Soporte: ${data.correo}</p>
+                    <p>💳 Licencia: ${data.licencia}</p>
+                    <p>⭐ Aparece en reseñas: ${data.aparecerReseñas}</p>
+                    <p>🛠️ Estado: ${data.estado}</p>
+                    <p>🖼️ Logo: <a href="${data.logo}" target="_blank">${data.logo}</a></p>
+                    <p>📸 Capturas:</p>
+                    <ul>
+                        ${data.capturas.map(url => `<li><a href="${url}" target="_blank">${url}</a></li>`).join("")}
+                        <p>👤 Nombre del Creador: ${data.nombreCreador}</p>
+<p>📌 Enviado antes: ${data.enviadoAntes}</p>
+<p>🎥 Video: <a href="${data.video}" target="_blank">${data.video ? "Ver video" : "No disponible"}</a></p>
+<p>📢 Contiene anuncios: ${data.contieneAnuncios}</p>
+<p>📲 Aparece en nuestra app: ${data.aparecerEnApp}</p>
+                    </ul>
+
+                    <div>
+                        <button onclick="aprobarApp('${doc.id}', ${JSON.stringify(data)})">✅ Aprobar</button>
+                        <button onclick="rechazarApp('${doc.id}')">❌ Rechazar</button>
+                    </div>
                 `;
-                tabla.innerHTML += fila;
+
+                appList.appendChild(appDiv);
             });
         }
 
-        cargarDatos();
-
-        // Mostrar detalles en el modal
-        window.verDetalles = async function(id) {
-            const querySnapshot = await getDocs(collection(db, "aplicaciones"));
-            querySnapshot.forEach((doc) => {
-                if (doc.id === id) {
-                    const datos = doc.data();
-
-                    document.getElementById("detNombre").innerText = datos.nombre;
-                    document.getElementById("detVersion").innerText = datos.version;
-                    document.getElementById("detFecha").innerText = new Date().toLocaleDateString();
-                    document.getElementById("detLogo").src = datos.logo;
-                    document.getElementById("detDescripcion").innerText = datos.descripcion;
-                    document.getElementById("detCaptura").src = datos.captura;
-                    document.getElementById("detCategoria").innerText = datos.categoria;
-                    document.getElementById("detPlataforma").innerText = datos.plataforma;
-                    document.getElementById("detParaNinos").innerText = datos.paraNinos;
-                    document.getElementById("detDesarrollador").innerText = datos.desarrollador;
-                    document.getElementById("detCorreo").innerText = datos.correo;
-                    document.getElementById("detLinkApp").href = datos.linkApp;
-                    document.getElementById("detAPK").href = datos.apk;
-
-                    document.getElementById("modal").style.display = "block";
-                }
-            });
+        window.aprobarApp = async function(id, data) {
+            await setDoc(doc(db, "aplicaciones_aprobadas", id), data);
+            await deleteDoc(doc(db, "aplicaciones", id));
+            alert("✅ Aplicación aprobada");
+            cargarAplicaciones();
         }
 
-        // Cerrar el modal
-        document.querySelector(".close").addEventListener("click", () => {
-            document.getElementById("modal").style.display = "none";
-        });
-
-        // Eliminar aplicación
-        window.eliminarApp = async function(id) {
-            const confirmacion = confirm("¿Estás seguro de eliminar esta aplicación?");
-            if (confirmacion) {
+        window.rechazarApp = async function(id) {
+            if (confirm("⚠️ ¿Eliminar esta app?")) {
                 await deleteDoc(doc(db, "aplicaciones", id));
-                alert("✅ Aplicación eliminada");
-                location.reload();
+                alert("❌ Aplicación eliminada");
+                cargarAplicaciones();
             }
         }
-    </script>
 
-    <!-- CSS para el modal -->
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 20px;
-            width: 60%;
-            border-radius: 10px;
-        }
-        .close {
-            float: right;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid black;
-        }
-        button {
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            margin: 5px;
-        }
-        button:hover {
-            opacity: 0.8;
-        }
-    </style>
+        cargarAplicaciones();
+    </script>
 
 </body>
 </html>
