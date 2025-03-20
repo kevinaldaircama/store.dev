@@ -433,3 +433,341 @@ body.dark-mode .footer-links a:hover {
             background: #c9302c;
         }
     </style>
+    </head>
+<body>
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-contenido">
+            <h2>No tiene conexión a internet</h2>
+            <p>Por favor, verifique su conexión y vuelva a intentarlo.</p>
+            <button class="btn" onclick="location.reload()">Recargar</button>
+        </div>
+    </div>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+    <p id="loading-text">Cargando, por favor espere un momento...</p>
+</div>
+    <!-- Encabezado -->
+    <div class="header">
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+        <span class="header-title">Online App Store</span>
+        <div class="icons">
+            <span onclick="goToPage('http://action_search')">🔎</span>
+            <span onclick="goToPage('http://action_notifications')">🔔</span>
+            <span class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</span>
+            <span onclick="goToPage('http://action_noads')">✖</span>
+        </div>
+    </div>
+
+    <!-- Sidebar Menú -->
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">✖</span>
+        <h2>Menú</h2>
+        <a href="#">Inicio</a>
+        <a href="javascript:void(0);" onclick="toggleSubMenu()">📂 Categorías</a>
+        <div class="submenu" id="submenu">
+            <a href="https://onlineappstoreoficial.blogspot.com/search/label/Application">Aplicaciones</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/search/label/Game?m=1">Juegos</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/search/label/Personalizacion?m=1">Personalización</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/search/label/Productividad?m=1">Productividad</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/search/label/Entretenimiento?m=1">Entretenimiento</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/search/label/Comunicacion?m=1">Comunicación</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/search/label/Music%20Audio">Música o Audio</a>
+        </div>
+        <a href="#">redes sociales</a>
+        <a href="https://forms.gle/UV6V2rFWvaQjGY7MA">sube tu app</a>
+        <a href="https://onlineappstoreoficial.blogspot.com/p/contact-us.html">contacto</a>
+        <a href="https://onlineappstore.es">sitio web</a>
+                    <a onclick="goToPage('http://action_noads')">✖eliminar anuncios✖</a>
+     </div>
+   
+
+    <!-- Tendencias Semanales -->
+<div class="section-header">
+    <span class="section-title">Tendencias Semanales</span>
+    <a href="https://www.onlineappstore.es/search/label/Presentado" class="view-more-btn">Ver más</a>
+</div>
+<div class="trends-container">
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_3CAJoW2YxDPoWEE-1sIhchtFKNFjGRX3_OKwobykJS_9nV7eMaMtxuznsjW4wuODD0_6rB8nFWM1giLXbQPgnFcw-RB-8WNuautJ0JeREYq-WsPeqmGpHavHeFwHTBIRhq5aoVbAt6o0-klDxUB3nFoigq-14jt7LreaQQSEFJN8ia8cKIwnkB9in0hF/s72-w200-h200-c/logo2_21_153656%20-%20Bleakprofessional257.png" 
+        alt="App 1" onclick="goToPage('go:labs')">
+        <div class="app-info">
+            <div class="app-name">Ghostcat Labs</div>
+            <div class="app-date">Feb-21 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:labs')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVQ9VbTjQ3AGHZQz6NO3u_DnaLshu-S61zKOMZjYiC9UbNr2ZzdJmx6ZjKwz1UFpFR2EfRsToDWHU_t9IVRWUT2jMsm4S3WkkF5o-WdLHXUc6rx5TNfC-ia5CePLpHUbsdtLiouK18ljiKIIFgX88m5UUND-b-k0QmNXpDMownUe56GAnsjD6MIYla7XXn/s72-w200-h200-c/IMG_20250117_211958.png" alt="App 1" onclick="goToPage('go:lite')">
+        <div class="app-info">
+            <div class="app-name">Appcreator24 Lite</div>
+            <div class="app-date">jan-18 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:lite')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinjGFySfGUtk3J_q6W81jpm4T0-yRwn6nO3vanK2OdhgdaNgABU5VCaqrYYV2Cax9SsCVkTP38NqjIH2rvhyXvUWwAU8w5eunZ2SWTVJ4a8yddVsC2cvU5cBwQ7WfUlg5Qokr7nFQiX4renLDTA7Nrb8lX9wgfXAd4ogWs7c89mO1AhZPdjtGRDFy0QQb2/w65-h65-c/IMG_20250109_085224.png" alt="App 1" onclick="goToPage('go:redes')">
+        <div class="app-info">
+            <div class="app-name">Multi sin redes</div>
+            <div class="app-date">jan-09 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:redes')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVzD4i8fZaWPMcml66OlqBEcZNqBVpCfRaTxYHMwnq8ZYt66qUFdhcjKpLtM9XRmixNChzlrPgyNeYp3_pjqxJQs0it4KrcEaGO3uSinzAkFP5MOLGcDmqyOhnZ34VDJRTrPxhu3TpNU1dqsrLSSsFWPlH1nPMt4j6D_kDT7m1YEDL6sk_2DNnIc4FrTi6/s72-w200-h200-c/3359090_ico%20-%20Jose%20Javier%20Salinas%20Marin.png" alt="App 7" onclick="goToPage('go:fulbol')">
+        <div class="app-info">
+            <div class="app-name">Fulbolitolibretv</div>
+            <div class="app-date">jan-21 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:fulbol')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRjXCzYHXluGcUk2aw_xeFeEFb_JpKssr1MZ0anVrPlj_XWdHH5GbsAvFd8Rwtl-i-3CmotMWqgFLsSYROi_x3phtbdh0wcqYEVKa6NxRegWEglniFtiqhtQ8dlBIBLW82oslo3uQx_5lq8kZ8kzBog7UMXtp9Q_1GwOeKDSKEqJKWkeFewe5iM6K7vU7o/w72-h72-p-k-no-nu/IMG_20250102_201922.png" alt="App 7" onclick="goToPage('go:Net')">
+        <div class="app-info">
+            <div class="app-name">Netmirrow</div>
+            <div class="app-date">jan-02 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:Net')">Descargar</button>
+    </div>
+</div>
+
+<!-- Juegos Destacados -->
+<div class="section-header">
+    <span class="section-title">Juegos Destacados</span>
+    <a href="https://www.onlineappstore.es/search/label/Juegos" class="view-more-btn">Ver más</a>
+</div>
+<div class="trends-container">
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn-d9IHdt8auDKQkyu_oKSeFDgWn0YjFxw1iFom2LI3TUwKUeftWkmVnKcoPP5OJWVJCzMrCS-HwGFvJEqYzJw0fxB1dTBlS69oi2wlBRrW1n5s_IcFxhFHLTMKRm8ijQFdUHFiQov95vAZv4G5V4rIYPw97oExYHQCJC3XxTca-YE59Pc4ZPoV3qT0qNR/s72-w200-h200-c/3376231_ico.png" alt="App 5" onclick="goToPage('go:internet')">
+        <div class="app-info">
+            <div class="app-name">multi juegos online</div>
+            <div class="app-date">Feb-10 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:internet')">Descargar</button>
+    </div>
+</div>
+
+<!-- aplicaciónes destacados -->
+<div class="section-header">
+    <span class="section-title">aplicaciónes destacados</span>
+    <a href="https://www.onlineappstore.es/search/label/Apps" class="view-more-btn">Ver más</a>
+</div>
+<div class="trends-container">
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_3CAJoW2YxDPoWEE-1sIhchtFKNFjGRX3_OKwobykJS_9nV7eMaMtxuznsjW4wuODD0_6rB8nFWM1giLXbQPgnFcw-RB-8WNuautJ0JeREYq-WsPeqmGpHavHeFwHTBIRhq5aoVbAt6o0-klDxUB3nFoigq-14jt7LreaQQSEFJN8ia8cKIwnkB9in0hF/s72-w200-h200-c/logo2_21_153656%20-%20Bleakprofessional257.png" alt="App 7" onclick="goToPage('go:labs')">
+        <div class="app-info">
+            <div class="app-name">Ghostcat Labs</div>
+            <div class="app-date">Feb-21 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:labs')">Descargar</button>
+    </div>
+     <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVzD4i8fZaWPMcml66OlqBEcZNqBVpCfRaTxYHMwnq8ZYt66qUFdhcjKpLtM9XRmixNChzlrPgyNeYp3_pjqxJQs0it4KrcEaGO3uSinzAkFP5MOLGcDmqyOhnZ34VDJRTrPxhu3TpNU1dqsrLSSsFWPlH1nPMt4j6D_kDT7m1YEDL6sk_2DNnIc4FrTi6/s72-w200-h200-c/3359090_ico%20-%20Jose%20Javier%20Salinas%20Marin.png" alt="App 7" onclick="goToPage('go:fulbol')">
+        <div class="app-info">
+            <div class="app-name">Fulbolitolibretv</div>
+            <div class="app-date">jan-21 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:fulbol')">Descargar</button>
+    </div>   
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVQ9VbTjQ3AGHZQz6NO3u_DnaLshu-S61zKOMZjYiC9UbNr2ZzdJmx6ZjKwz1UFpFR2EfRsToDWHU_t9IVRWUT2jMsm4S3WkkF5o-WdLHXUc6rx5TNfC-ia5CePLpHUbsdtLiouK18ljiKIIFgX88m5UUND-b-k0QmNXpDMownUe56GAnsjD6MIYla7XXn/s72-w200-h200-c/IMG_20250117_211958.png" alt="App 7" onclick="goToPage('go:lite')">
+        <div class="app-info">
+            <div class="app-name">Appcreator24 Lite</div>
+            <div class="app-date">Feb-10 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:lite')">Descargar</button>
+    </div>    
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRjXCzYHXluGcUk2aw_xeFeEFb_JpKssr1MZ0anVrPlj_XWdHH5GbsAvFd8Rwtl-i-3CmotMWqgFLsSYROi_x3phtbdh0wcqYEVKa6NxRegWEglniFtiqhtQ8dlBIBLW82oslo3uQx_5lq8kZ8kzBog7UMXtp9Q_1GwOeKDSKEqJKWkeFewe5iM6K7vU7o/w72-h72-p-k-no-nu/IMG_20250102_201922.png" alt="App 7" onclick="goToPage('go:Net')">
+        <div class="app-info">
+            <div class="app-name">Netmirrow</div>
+            <div class="app-date">jan-22- 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:Net')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinjGFySfGUtk3J_q6W81jpm4T0-yRwn6nO3vanK2OdhgdaNgABU5VCaqrYYV2Cax9SsCVkTP38NqjIH2rvhyXvUWwAU8w5eunZ2SWTVJ4a8yddVsC2cvU5cBwQ7WfUlg5Qokr7nFQiX4renLDTA7Nrb8lX9wgfXAd4ogWs7c89mO1AhZPdjtGRDFy0QQb2/w65-h65-c/IMG_20250109_085224.png" alt="App 7" onclick="goToPage('go:redes')">
+        <div class="app-info">
+            <div class="app-name">Multi sin redes</div>
+            <div class="app-date">Feb-10 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:redes')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEAh4NR7r4HpdR44VL3cyqzNeq-LrYZGLFGM89g2JkxPM2lEN7DWRswcyYBW3lC9LK6-scE0skLYGxL-QkGl9HhS_LYjP9OLdkpID8t9YLSZ0CHdVWtTKdsxtkU4R1UXdBvLotilDvMgLfO2lx0wa5hD0Qjej5JwSDYBu0iqNnKQpnWUwmMSoMdpHdj6o6/s72-w200-h200-c/IMG_20250119_015741_(512_x_512_p%C3%ADxel)%20-%20MINAMI%20Inc..png" alt="App 7" onclick="goToPage('https://ejemplo7.com')">
+        <div class="app-info">
+            <div class="app-name">Anime Odyssey</div>
+            <div class="app-date">Feb-22 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('https://ejemplo7.com')">Descargar</button>
+    </div>
+</div>
+ <!-- Subido Recientemente -->
+<div class="section-header">
+    <span class="section-title">Subido Recientemente</span>
+    <a href="https://www.onlineappstore.es/search/label" class="view-more-btn">Ver más</a>
+</div>
+<div class="trends-container">
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjngj8OIP9VtLLoQ2eBQY8c50s5kTb0FvXAsx0faY-JLjFyHtM-VSfGO-ZiwJjqUVWjrD_xU6XD0dfzLnx7ApaOUcX7CbSgv4LIfyQzQqRhEpE1KQIIZrCou79VDXRGlofTvtqm5U784kQ_M3naCi6y5tDj8kfxgruxfIN-ImciP-fOWi3TIrXTqww4Kcu9/s72-w200-h200-c/logo2_21_153656 - David juan Velasco Ayala.png" alt="App 7" onclick="goToPage('go:labslite')">
+        <div class="app-info">
+            <div class="app-name">Ghostcat Labs lite</div>
+            <div class="app-date">Feb-10 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:labslite')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh7MjhcFhJP20egTLLbiXUxlxjczwa1QqtwmM49fHmcXUuvauklR9an18-TRECC6Wzscf5-sLTgUb2XFf_W63pBK7BlGexiHa5tm9YJ50neZFe8AHrovZgfMTz-W3JLfaANtaO1Z8bjUtEIO752u74NxNC0z0SdP_CuoyG3fx0v8Xo8dWPboAOScHiwW-io/s72-w200-h200-c/2743167_ico%20-%20millas%20compus.png" alt="App 7" onclick="goToPage('go:canchita')">
+        <div class="app-info">
+            <div class="app-name">Canchita Tv</div>
+            <div class="app-date">Feb-10 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:canchita')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqWaY3gpWfUuJvF0xuvCBhXpdMDc_I9PWsg-ykRwLzUFBNLyH3IKOSGxsEFVLC0SOxEMlrY2I4KTlTXQh03yz-yFNn7Oz5Izh63em4Y5b1dQEPHa4bGm46IJBvxNTNRXNsHy-nsuzKmH_bmAD-KBteumN9FqgmfjZU2szd3AN6380ibHkRU5svZrBsWRwR/s72-w200-h200-c/DRAGON%20PLUS%20PRO%20LOGO%20-%20Siuloong%20Velazquez%20Lerma.png" alt="App 7" onclick="goToPage('go:dragon')">
+        <div class="app-info">
+            <div class="app-name">Drango plus</div>
+            <div class="app-date">Feb-10 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:dragon')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdE2wn_X1yvN83z2Ik5dxu-qQ6nYbI6cF0JwjAkA75uoLXLACHh4mWurdDaMYqWz3azhGjjSNmKDIfNF-QVBNIVAtmI1EkLFF7qh_QeqyVe1bLL3VbhOLCENL1NdasIgzC4YTRHSx38Ymk73s3rPhgW7IJIt2OJuiHz0ZTP6u8FvCfsErd48Hxq3wIRYzO/s72-w200-h200-c/142%20-%20Zabdiel%20West.png" alt="App 7" onclick="goToPage('go:hd')">
+        <div class="app-info">
+            <div class="app-name">Playlist HD - Escuchar Música</div>
+            <div class="app-date">Feb-23 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:hd')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFXRK7V71jiZ0agmAqUlhmwzDNY6UBf09BWn6ntVGUPPWeCce2JExmLSNko1YzXmCmObwOVVt_q7f5jlCjPnI_Uvd0QLJfiba-3TtAuHNtSY04HPthLWA3nBJDiRWH3_Sk7jWMuxnu9p53vypND9WmYMlcP9d7F2B-dK9mwMc13AY-LBr-EtMxX5VOLAQA/s72-w200-h200-c/3484058_ico%20-%20Senig%20HM.png" alt="App 7" onclick="goToPage('go:plus')">
+        <div class="app-info">
+            <div class="app-name">NAGI PLUS</div>
+            <div class="app-date">Feb-22 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:plus')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUA5higKnJ5fl4XiHmLy3gL0M936qdZl0gNXF-HkbpYW-mAq2nHxAc17gUNBw1mWn6MB2dEXqH__GBPPy0WWfUI4laMnxE10XupfDlkma0vGs-Ph6VDiaFiXgToysyd_6LqI1k9njL9h6zK1J2Xhyg3_OeplMWaoJGM7zkSmigIlmmN__QOP7dzRSmBwaF/s72-w200-h200-c/IMG_20250222_185054_553%20-%20Doriax%20Vip.jpg" alt="App 7" onclick="goToPage('go:proxi')">
+        <div class="app-info">
+            <div class="app-name">DORIAX - Unlimited Proxy</div>
+            <div class="app-date">Feb-10 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:proxi')">Descargar</button>
+    </div>
+    <div class="app">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEAh4NR7r4HpdR44VL3cyqzNeq-LrYZGLFGM89g2JkxPM2lEN7DWRswcyYBW3lC9LK6-scE0skLYGxL-QkGl9HhS_LYjP9OLdkpID8t9YLSZ0CHdVWtTKdsxtkU4R1UXdBvLotilDvMgLfO2lx0wa5hD0Qjej5JwSDYBu0iqNnKQpnWUwmMSoMdpHdj6o6/s72-w200-h200-c/IMG_20250119_015741_(512_x_512_p%C3%ADxel)%20-%20MINAMI%20Inc..png" alt="App 7" onclick="goToPage('go:anime')">
+        <div class="app-info">
+            <div class="app-name">Anime Odyssey</div>
+            <div class="app-date">Feb-22 - 2025</div>
+        </div>
+        <button class="download-btn" onclick="goToPage('go:anime')">Descargar</button>
+    </div>
+</div>
+
+
+<!-- categoría -->
+<div class="container">
+    <div class="section-box">
+        <h2>📂 Categorías</h2>
+        <div class="grid">
+            <a href="https://www.onlineappstore.es/search/label/Comunicacion?m=1">Comunicación</a>
+            <a href="https://www.onlineappstore.es/search/label/Entretenimiento?m=1">Entretenimiento</a>
+            <a href="https://www.onlineappstore.es/search/label/Game?m=1">Game</a>
+            <a href="https://www.onlineappstore.es/search/label/Featured?m=1">Featured</a>
+            <a href="https://www.onlineappstore.es/search/label/Movies?m=1">Movies</a>
+            <a href="https://www.onlineappstore.es/search/label/Música?m=1">Música</a>
+            <a href="https://www.onlineappstore.es/search/label/Radio?m=1">Radio</a>
+            <a href="https://www.onlineappstore.es/search/label/Series?m=1">Series</a>
+            <a href="https://www.onlineappstore.es/search/label/Soccer?m=1">Soccer</a>
+            <a href="https://www.onlineappstore.es/search/label/Anime?m=1">Anime</a>
+            <a href="https://www.onlineappstore.es/search/label/Internet?m=1">Internet</a>
+            <a href="https://www.onlineappstore.es/search/label/VPN?m=1">VPN</a>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <h2>💻 Plataformas</h2>
+        <div class="grid">
+            <a href="https://www.onlineappstore.es/search/label/appcreator24?m=1">AppCreator24</a>
+            <a href="3https://www.onlineappstore.es/search/label/androidstudio?m=1">Android Studio</a>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <h2>👤 acerca de👇</h2>
+        <div class="footer-links">
+            <a href="https://onlineappstoreoficial.blogspot.com/p/about.html">Acerca</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/p/conditions-and-use.html">Condiciones</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/p/dmca.html">DMCA</a>
+            <a href="#">Términos</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/p/policy-and-privacy.html">Privacidad</a>
+            <a href="https://onlineappstoreoficial.blogspot.com/p/contact-us.html">Contacto</a>
+            <a href="https://forms.gle/UV6V2rFWvaQjGY7MA">Sube tu app</a>
+        </div>
+    </div>
+</div>
+<!-- derechos -->
+<div class="footer">
+    Todos los derechos ©️ 2025 - online app store 
+</div>
+    <!-- Scripts -->
+    <script>
+        function verificarConexion() {
+            const modal = document.getElementById("modal");
+
+            if (!navigator.onLine) {
+                modal.style.display = "flex"; // Muestra el modal si no hay conexión
+            }
+        }
+
+        window.addEventListener("load", verificarConexion);        function goToPage(url) {
+            window.location.href = url;
+        }        
+
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.style.left = sidebar.style.left === "0px" ? "-280px" : "0px";
+        }
+
+        function toggleSubMenu() {
+            var submenu = document.getElementById("submenu");
+            submenu.classList.toggle("active");
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+        
+        // Alternar el menú lateral
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.left = sidebar.style.left === "0px" ? "-280px" : "0px";
+}
+
+// Alternar submenú con animación
+function toggleSubMenu() {
+    const submenu = document.getElementById("submenu");
+    submenu.classList.toggle("active");
+}
+
+// Alternar modo oscuro con cambio de ícono
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    const icon = document.querySelector(".dark-mode-toggle");
+    icon.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+}
+        
+// Función para redireccionar
+function goToPage(url) {
+    window.location.href = url;
+}
+
+
+    window.onload = function() {
+        setTimeout(function() {
+            document.getElementById("preloader").style.display = "none";
+        }, 3000); // Oculta el preloader después de 3 seg
