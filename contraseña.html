@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restablecer Contraseña</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #ff5722;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #e64a19;
+}
+
+a {
+    display: block;
+    margin-top: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Restablecer Contraseña</h2>
+        <p>Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.</p>
+        <input type="email" id="email" placeholder="Correo electrónico">
+        <button onclick="resetPassword()">Enviar Enlace</button>
+        <p id="mensaje"></p>
+        <a href="login.html">Volver al inicio de sesión</a>
+    </div>
+
+    <script type="module" >
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+// Configuración de Firebase
+   const firebaseConfig = {
+            apiKey: "AIzaSyBZYhJomDLpgCBTAUWLKJVB5IYCs-SUGF8",
+            authDomain: "aplicaciones-62b00.firebaseapp.com",
+            projectId: "aplicaciones-62b00",
+            storageBucket: "aplicaciones-62b00.firebasestorage.app",
+            messagingSenderId: "1085688217425",
+            appId: "1:1085688217425:web:e062f98b70c0c8956f9d70",
+            measurementId: "G-XN5Z2YQG22"
+        };
+
+
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Función para restablecer contraseña
+function resetPassword() {
+    const email = document.getElementById("email").value;
+    const mensaje = document.getElementById("mensaje");
+
+    if (email === "") {
+        mensaje.innerHTML = "Por favor, ingresa tu correo.";
+        mensaje.style.color = "yellow";
+        return;
+    }
+
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            mensaje.innerHTML = "Correo enviado. Revisa tu bandeja de entrada.";
+            mensaje.style.color = "green";
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            mensaje.innerHTML = "Error al enviar el correo. Verifica que el correo esté registrado.";
+            mensaje.style.color = "red";
+        });
+}
+
+// Hacer accesible la función desde el HTML
+window.resetPassword = resetPassword;
+    </script></script>
+</body>
+</html>
