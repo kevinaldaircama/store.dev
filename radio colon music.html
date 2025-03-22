@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>radio colom</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Contenedor principal */
+        .app-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Logo */
+        .app-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 15px;
+            display: block;
+            margin: 10px auto;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Botones en 2 columnas */
+        .btn-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+        }
+
+        .btn-googleplay { background: #34a853; }
+        .btn-apk { background: #4285f4; }
+        .btn-valoracion { background: #ff7b00; }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 500px) {
+            .btn-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor Principal -->
+    <div class="app-container">
+        <!-- Logo de la App -->
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOnysW6pPEv-h55U5cC9untMhWRH9w5ygX05ZTc8Wv7ANnhsb4i58D-E1cL1vU01LGDgVJsUNb9F8B2ISoVvdZsbrZvbrH2GpX-6ejyBCd82E_mqTQqbOiNGOgKqWxvqnLRed8b8Vu1Do04lpnJDt486-8-taSe75AKwg9d0GJBIWO8cvBec2ISMp9buui/s512/IMG_20240829_213825_272.jpg" 
+             alt="Logo de la App" class="app-logo">
+
+        <h2>CREADOR: MonkeyDGarp_27</h2>
+        <h3>Versión: <span>1.30</span></h3>
+        <h3>Correo de soporte:</h3>
+        <h3>Licencia: <i>gratis</i></h3>
+
+        <h3>Descripción:</h3>
+        <p>Puedes descargar música en línea.
+
+diseñado para satisfacer a las gentes de sus necesidades amantes de la música y minijuegos de todo el mundo.
+
+Con una interfaz intuitiva y fácil de usar, permite a los usuarios explorar una vasta biblioteca de canciones, artistas y álbumes de forma gratuita. 
+
+Además de su extenso catálogo, radio colón músic fomenta una comunidad vibrante donde los usuarios pueden compartir recomendaciones, descubrir nuevas canciones y conectarse con otros aficionados a la música.
+
+Sigue escuchando la radio aunque uses otras apps o bloquees tu móvil.
+
+puedes escuchar radio AM y radio FM gratis incluso si estás en el extranjero.</p>
+
+        <!-- Botones en 2 columnas -->
+        <div class="btn-container">
+            <a href="https://www.mediafire.com/file/26ek5c45jbx5gfd/RadioCol%25C3%25B3nM%25C3%25BAsicV.1.30.apk/file?dkey=hanzjs9jup8&amp;r=582" class="btn btn-googleplay">Descargar en Google Play</a>
+            <a href="https://www.mediafire.com/file/26ek5c45jbx5gfd/RadioCol%25C3%25B3nM%25C3%25BAsicV.1.30.apk/file?dkey=hanzjs9jup8&amp;r=582" class="btn btn-apk">Descargar APK</a>
+            <a href="reseñas." class="btn btn-valoracion">⭐ Valorar App</a>
+        </div>
+    </div>
+
+</body>
+</html>

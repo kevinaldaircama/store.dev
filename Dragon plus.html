@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon plus</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Contenedor principal */
+        .app-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Logo */
+        .app-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 15px;
+            display: block;
+            margin: 10px auto;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Botones en 2 columnas */
+        .btn-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+        }
+
+        .btn-googleplay { background: #34a853; }
+        .btn-apk { background: #4285f4; }
+        .btn-valoracion { background: #ff7b00; }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 500px) {
+            .btn-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor Principal -->
+    <div class="app-container">
+        <!-- Logo de la App -->
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqWaY3gpWfUuJvF0xuvCBhXpdMDc_I9PWsg-ykRwLzUFBNLyH3IKOSGxsEFVLC0SOxEMlrY2I4KTlTXQh03yz-yFNn7Oz5Izh63em4Y5b1dQEPHa4bGm46IJBvxNTNRXNsHy-nsuzKmH_bmAD-KBteumN9FqgmfjZU2szd3AN6380ibHkRU5svZrBsWRwR/s338/DRAGON%20PLUS%20PRO%20LOGO%20-%20Siuloong%20Velazquez%20Lerma.png" 
+             alt="Logo de la App" class="app-logo">
+
+        <h2>CREADOR: Siu Loong</h2>
+        <h3>Versión: <span>10.0</span></h3>
+        <h3>Correo de soporte: siuloongvelazquezlerma@gmail.com</h3>
+        <h3>Licencia: <i>gratis</i></h3>
+
+        <h3>Descripción:</h3>
+        <p>Disfruta de todo el contenido de Dragon Ball, peliculas, series, mangas y especiales en un solo lugar.</p>
+
+        <!-- Botones en 2 columnas -->
+        <div class="btn-container">
+            <a href="https://apk.e-droid.net/apk/app3488766-epq9vc.apk?v=3" class="btn btn-googleplay">Descargar en Google Play</a>
+            <a href="https://apk.e-droid.net/apk/app3488766-epq9vc.apk?v=3" class="btn btn-apk">Descargar APK</a>
+            <a href="reseñas." class="btn btn-valoracion">⭐ Valorar App</a>
+        </div>
+    </div>
+
+</body>
+</html>
